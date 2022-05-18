@@ -7,7 +7,7 @@ function App() {
   const [userChoice, setUserChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState('');
   const [score, setScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [highScore, setHighScore] = useState(score);
 
   const getComputerChoice = () => {
     let computersChoice = Math.floor(Math.random() * 3);
@@ -39,10 +39,12 @@ function App() {
     else if (userChoice === 'rock') {
       if (computerChoice === 'paper') {
         setResult('The computer won'); setScore(0);
+      } else if (computerChoice === 'rock') {
+        setResult('a tie');
       } else {
         setResult('You won'); setScore(score + 1);
-        if (score > highScore) {
-          setHighScore(score);
+        if (score >= highScore) {
+          setHighScore(score + 1);
         }
       }
     }
@@ -50,9 +52,11 @@ function App() {
     else if (userChoice === 'paper') {
       if (computerChoice === 'rock') {
         setResult('You won'); setScore(score + 1);
-        if (score > highScore) {
-          setHighScore(score);
+        if (score >= highScore) {
+          setHighScore(score + 1);
         }
+      } else if (computerChoice === 'paper') {
+        setResult('a tie');
       } else {
         setResult('The computer won'); setScore(0);
       }
@@ -65,13 +69,16 @@ function App() {
         setResult('a tie');
       } else {
         setResult('You won'); setScore(score + 1);
-        if (score > highScore) {
-          setHighScore(score);
+        if (score >= highScore) {
+          setHighScore(score + 1);
         }
       }
     }
   }
 
+function performTest () {
+  console.log(score, highScore)
+}
 
 
   return (
@@ -86,6 +93,7 @@ function App() {
         <button onClick={() => setChoice('scissors')}>Scissors</button>
         <button onClick={playGame}>Play Game</button>
         <button onClick={() => setHighScore(0)}>Clear High Score</button>
+        <button onClick={performTest}>test</button>
 
         <h1>{result}</h1>
         <h2>Your score {score}</h2>
