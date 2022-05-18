@@ -17,19 +17,21 @@ function App() {
   // }
 
   const getComputerChoice = () => {
-    let computerChoice = Math.floor(Math.random() * 3);
-    switch (computerChoice) {
-      case 0:
-        return 'rock';
-      case 1:
-        return 'paper';
-      case 2:
-        return 'scissors';
+    let computersChoice = Math.floor(Math.random() * 3);
+    switch (computersChoice) {
+      case 0: setComputerChoice('rock');
+        break;
+      case 1: setComputerChoice('paper');
+        break;
+      case 2: setComputerChoice('scissors');
+        
     }
+    console.log(computerChoice);
+    console.log(computersChoice);
   }
 
-  const playGame = (computerChoice) => {
-
+  const playGame = () => {
+    
     console.log('user choice', userChoice)
     console.log('computer choice', computerChoice)
 
@@ -65,6 +67,7 @@ function App() {
 
   const setChoice = (value) => {
     setUserChoice(value)
+    getComputerChoice()
   }
 
   return (
@@ -75,7 +78,7 @@ function App() {
       <div>
 
         <input type="text" onChange={(event)=>{setChoice(event.target.value)}} />
-
+        <button onClick={getComputerChoice}>testing</button>
         <button onClick={playGame}>Play Game?</button>
         <h1>{result}</h1>
       </div>
