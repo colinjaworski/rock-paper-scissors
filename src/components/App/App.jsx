@@ -93,7 +93,6 @@ function performTest () {
         <button onClick={() => setChoice('scissors')}>Scissors</button>
         <button onClick={playGame}>Play Game</button>
         <button onClick={() => setHighScore(0)}>Clear High Score</button>
-        <button onClick={performTest}>test</button>
 
         <h1>{result}</h1>
         <h2>Your score {score}</h2>
