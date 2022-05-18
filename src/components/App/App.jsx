@@ -5,15 +5,16 @@ function App() {
 
   const [result, setResult] = useState('');
   const [userChoice, setUserChoice] = useState('');
+  const [computerChoice, setComputerChoice] = useState('');
 
-  const getUserChoice = (userChoice) => {
-    userChoice = userChoice.toLowerCase();
-    if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
-      return userChoice
-    } else {
-      // console.log(`Sorry, ${userChoice} is not valid `);
-    }
-  }
+  // const getUserChoice = (userChoice) => {
+  //   userChoice = userChoice.toLowerCase();
+  //   if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
+  //     return userChoice
+  //   } else {
+  //     console.log(`Sorry, ${userChoice} is not valid `);
+  //   }
+  // }
 
   const getComputerChoice = () => {
     let computerChoice = Math.floor(Math.random() * 3);
@@ -27,7 +28,10 @@ function App() {
     }
   }
 
-  const determineWinner = (userChoice, computerChoice) => {
+  const playGame = (computerChoice) => {
+
+    console.log('user choice', userChoice)
+    console.log('computer choice', computerChoice)
 
     if (userChoice === computerChoice) {
       setResult('This game was a tie');
@@ -58,13 +62,9 @@ function App() {
     }
   }
 
-  function playGame() {
-
-  }
 
   const setChoice = (value) => {
     setUserChoice(value)
-    console.log(value);
   }
 
   return (
@@ -75,9 +75,6 @@ function App() {
       <div>
 
         <input type="text" onChange={(event)=>{setChoice(event.target.value)}} />
-
-
-
 
         <button onClick={playGame}>Play Game?</button>
         <h1>{result}</h1>
