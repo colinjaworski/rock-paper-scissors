@@ -7,14 +7,15 @@ function App() {
   const [userChoice, setUserChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState('');
 
-  // const getUserChoice = (userChoice) => {
-  //   userChoice = userChoice.toLowerCase();
-  //   if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
-  //     return userChoice
-  //   } else {
-  //     console.log(`Sorry, ${userChoice} is not valid `);
-  //   }
-  // }
+  const getUserChoice = () => {
+    // console.log(userChoice.toLowerCase())
+    // setUserChoice(userChoice.toLowerCase());
+    if (userChoice.toLowerCase() === 'rock' || userChoice.toLowerCase() === 'paper' || userChoice.toLowerCase() === 'scissors') {
+      console.log(userChoice);
+    } else {
+      console.log(`Sorry, ${userChoice} is not valid `);
+    }
+  }
 
   const getComputerChoice = () => {
     let computersChoice = Math.floor(Math.random() * 3);
@@ -77,7 +78,7 @@ function App() {
       <div>
 
         <input type="text" onChange={(event)=>{setChoice(event.target.value)}} />
-        <button onClick={getComputerChoice}>testing</button>
+        <button onClick={getUserChoice}>testing</button>
         <button onClick={playGame}>Play Game?</button>
         <h1>{result}</h1>
       </div>
