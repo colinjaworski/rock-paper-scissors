@@ -54,28 +54,24 @@ function App() {
     }
   }
 
-  const setChoice = (a) => {
-    setUserChoice(a)
-    console.log(userChoice);
+  const setChoice = (choice) => {
+    setUserChoice(choice);
+    getComputerChoice();
   }
-  
+
   return (
     <>
       <header className="Header">
         <h1>Rock Paper Scissors</h1>
       </header>
       <div>
-      
+
         <button onClick={() => setChoice("rock")}>Rock</button>
         <button onClick={() => setChoice("paper")}>Paper</button>
         <button onClick={() => setChoice("scissors")}>Scissors</button>
+        <br />
+        <button onClick={playGame}>Play Game</button>
 
-
-          {/* <button onClick={setChoice}>Rock</button>
-          <button>Paper</button>
-          <button>Scissors</button> <br />
-          <button onClick={playGame}>Play Game</button> */}
-    
         {/* <h3>You chose {userChoice}</h3> */}
         <h1>{result}</h1>
       </div>
