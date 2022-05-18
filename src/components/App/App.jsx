@@ -24,14 +24,13 @@ function App() {
       case 1: setComputerChoice('paper');
         break;
       case 2: setComputerChoice('scissors');
-        
+
     }
-    console.log(computerChoice);
-    console.log(computersChoice);
   }
 
   const playGame = () => {
     
+    getComputerChoice();
     console.log('user choice', userChoice)
     console.log('computer choice', computerChoice)
 
