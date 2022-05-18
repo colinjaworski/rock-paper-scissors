@@ -76,11 +76,6 @@ function App() {
     }
   }
 
-function performTest () {
-  console.log(score, highScore)
-}
-
-
   return (
     <>
       <header className="Header">
