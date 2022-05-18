@@ -36,7 +36,7 @@ function App() {
 
     else if (userChoice === 'rock') {
       if (computerChoice === 'paper') {
-        setResult('The computer won');
+        setResult('The computer won'); setScore(0);
       } else {
         setResult('You won'); setScore(score + 1);
       }
@@ -46,13 +46,13 @@ function App() {
       if (computerChoice === 'rock') {
         setResult('You won'); setScore(score + 1);
       } else {
-        setResult('The computer won');
+        setResult('The computer won'); setScore(0);
       }
     }
 
     else if (userChoice === 'scissors') {
       if (computerChoice === 'rock') {
-        setResult('You lost bud');
+        setResult('You lost bud'); setScore(0);
       } else {
         setResult('You won'); setScore(score + 1);
       }
