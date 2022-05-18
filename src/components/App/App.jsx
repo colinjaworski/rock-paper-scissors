@@ -6,7 +6,8 @@ function App() {
   const [result, setResult] = useState('');
   const [userChoice, setUserChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState('');
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const getComputerChoice = () => {
     let computersChoice = Math.floor(Math.random() * 3);
@@ -29,6 +30,10 @@ function App() {
 
     console.log('in playGame function, userChoice:', userChoice);
     console.log('in playGame function, computerChoice:', computerChoice);
+
+    if (score > highScore) {
+      setHighScore(score + 1);
+    }
 
     if (userChoice === computerChoice) {
       setResult('This game was a tie');
@@ -72,8 +77,11 @@ function App() {
         <button onClick={() => setChoice('paper')}>Paper</button>
         <button onClick={() => setChoice('scissors')}>Scissors</button>
         <button onClick={playGame}>Play Game</button>
+        <button onClick={() => setHighScore(0)}>Clear High Score</button>
+
         <h1>{result}</h1>
-        <h2>your score {score}</h2>
+        <h2>Your score {score}</h2>
+        <h2>High score {highScore}</h2>
 
       </div>
     </>
