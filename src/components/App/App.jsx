@@ -6,7 +6,7 @@ function App() {
   const [result, setResult] = useState('');
   const [userChoice, setUserChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState('');
-
+  const [score, setScore] = useState(0)
 
   const getComputerChoice = () => {
     let computersChoice = Math.floor(Math.random() * 3);
@@ -38,13 +38,13 @@ function App() {
       if (computerChoice === 'paper') {
         setResult('The computer won');
       } else {
-        setResult('You won')
+        setResult('You won'); setScore(score + 1);
       }
     }
 
     else if (userChoice === 'paper') {
       if (computerChoice === 'rock') {
-        setResult('You won');
+        setResult('You won'); setScore(score + 1);
       } else {
         setResult('The computer won');
       }
@@ -54,10 +54,12 @@ function App() {
       if (computerChoice === 'rock') {
         setResult('You lost bud');
       } else {
-        setResult('Yay, you win!');
+        setResult('You won'); setScore(score + 1);
       }
     }
   }
+
+
 
   return (
     <>
@@ -71,6 +73,7 @@ function App() {
         <button onClick={() => setChoice('scissors')}>Scissors</button>
         <button onClick={playGame}>Play Game</button>
         <h1>{result}</h1>
+        <h2>your score {score}</h2>
 
       </div>
     </>
