@@ -28,12 +28,9 @@ function App() {
 
   const playGame = () => {
 
-    console.log('in playGame function, userChoice:', userChoice);
-    console.log('in playGame function, computerChoice:', computerChoice);
+    console.log('userChoice ', userChoice);
+    console.log('computerChoice ', computerChoice);
 
-    if (score > highScore) {
-      setHighScore(score + 1);
-    }
 
     if (userChoice === computerChoice) {
       setResult('This game was a tie');
@@ -44,12 +41,18 @@ function App() {
         setResult('The computer won'); setScore(0);
       } else {
         setResult('You won'); setScore(score + 1);
+        if (score > highScore) {
+          setHighScore(score);
+        }
       }
     }
 
     else if (userChoice === 'paper') {
       if (computerChoice === 'rock') {
         setResult('You won'); setScore(score + 1);
+        if (score > highScore) {
+          setHighScore(score);
+        }
       } else {
         setResult('The computer won'); setScore(0);
       }
@@ -58,8 +61,13 @@ function App() {
     else if (userChoice === 'scissors') {
       if (computerChoice === 'rock') {
         setResult('You lost bud'); setScore(0);
+      } else if (computerChoice === 'scissors') {
+        setResult('a tie');
       } else {
         setResult('You won'); setScore(score + 1);
+        if (score > highScore) {
+          setHighScore(score);
+        }
       }
     }
   }
