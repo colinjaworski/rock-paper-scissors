@@ -7,15 +7,6 @@ function App() {
   const [userChoice, setUserChoice] = useState('');
   const [computerChoice, setComputerChoice] = useState('');
 
-  const getUserChoice = () => {
-    // console.log(userChoice.toLowerCase())
-    // setUserChoice(userChoice.toLowerCase());
-    if (userChoice.toLowerCase() === 'rock' || userChoice.toLowerCase() === 'paper' || userChoice.toLowerCase() === 'scissors') {
-      console.log(userChoice);
-    } else {
-      console.log(`Sorry, ${userChoice} is not valid `);
-    }
-  }
 
   const getComputerChoice = () => {
     let computersChoice = Math.floor(Math.random() * 3);
@@ -30,10 +21,9 @@ function App() {
   }
 
   const playGame = () => {
-    
-    getComputerChoice();
-    console.log('user choice', userChoice)
-    console.log('computer choice', computerChoice)
+
+    console.log('in playGame function, userChoice:', userChoice);
+    console.log('in playGame function, computerChoice:', computerChoice);
 
     if (userChoice === computerChoice) {
       setResult('This game was a tie');
@@ -64,22 +54,29 @@ function App() {
     }
   }
 
-
-  const setChoice = (value) => {
-    setUserChoice(value)
-    getComputerChoice()
+  const setChoice = (a) => {
+    setUserChoice(a)
+    console.log(userChoice);
   }
-
+  
   return (
     <>
       <header className="Header">
         <h1>Rock Paper Scissors</h1>
       </header>
       <div>
+      
+        <button onClick={() => setChoice("rock")}>Rock</button>
+        <button onClick={() => setChoice("paper")}>Paper</button>
+        <button onClick={() => setChoice("scissors")}>Scissors</button>
 
-        <input type="text" onChange={(event)=>{setChoice(event.target.value)}} />
-        <button onClick={getUserChoice}>testing</button>
-        <button onClick={playGame}>Play Game?</button>
+
+          {/* <button onClick={setChoice}>Rock</button>
+          <button>Paper</button>
+          <button>Scissors</button> <br />
+          <button onClick={playGame}>Play Game</button> */}
+    
+        {/* <h3>You chose {userChoice}</h3> */}
         <h1>{result}</h1>
       </div>
     </>
