@@ -20,6 +20,11 @@ function App() {
     }
   }
 
+  const setChoice = (choice) => {
+    setUserChoice(choice);
+    getComputerChoice();
+  }
+
   const playGame = () => {
 
     console.log('in playGame function, userChoice:', userChoice);
@@ -29,7 +34,7 @@ function App() {
       setResult('This game was a tie');
     }
 
-    if (userChoice === 'rock') {
+    else if (userChoice === 'rock') {
       if (computerChoice === 'paper') {
         setResult('The computer won');
       } else {
@@ -37,7 +42,7 @@ function App() {
       }
     }
 
-    if (userChoice === 'paper') {
+    else if (userChoice === 'paper') {
       if (computerChoice === 'rock') {
         setResult('You won');
       } else {
@@ -45,18 +50,13 @@ function App() {
       }
     }
 
-    if (userChoice === 'scissors') {
+    else if (userChoice === 'scissors') {
       if (computerChoice === 'rock') {
         setResult('You lost bud');
       } else {
         setResult('Yay, you win!');
       }
     }
-  }
-
-  const setChoice = (choice) => {
-    setUserChoice(choice);
-    getComputerChoice();
   }
 
   return (
@@ -66,14 +66,12 @@ function App() {
       </header>
       <div>
 
-        <button onClick={() => setChoice("rock")}>Rock</button>
-        <button onClick={() => setChoice("paper")}>Paper</button>
-        <button onClick={() => setChoice("scissors")}>Scissors</button>
-        <br />
+        <button onClick={() => setChoice('rock')}>Rock</button>
+        <button onClick={() => setChoice('paper')}>Paper</button>
+        <button onClick={() => setChoice('scissors')}>Scissors</button>
         <button onClick={playGame}>Play Game</button>
-
-        {/* <h3>You chose {userChoice}</h3> */}
         <h1>{result}</h1>
+
       </div>
     </>
   );
