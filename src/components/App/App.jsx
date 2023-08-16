@@ -31,26 +31,24 @@ function App() {
 
   function playGame() { // evaluates result based on users choice
 
-      switch (userChoice) {
+    switch (userChoice) {
 
-        case computerChoice: setResult('This game was a tie');
-          break;
+      case computerChoice: setResult('This game was a tie');
+        break;
 
-        case 'rock':
-          computerChoice === 'paper' ? youLost() : youWon();
-          break;
+      case 'rock':
+        computerChoice === 'paper' ? youLost() : youWon();
+        break;
 
-        case 'paper':
-          computerChoice === 'scissors' ? youLost() : youWon();
-          break;
+      case 'paper':
+        computerChoice === 'scissors' ? youLost() : youWon();
+        break;
 
-        default:
-          computerChoice === 'rock' ? youLost() : youWon();
-          break;
-      }
-      getComputerChoice() // important for changing the computer's choice each time a game is played
-      setChoice('')
-
+      default:
+        computerChoice === 'rock' ? youLost() : youWon();
+        break;
+    }
+    resetValues();
   }
 
   const youWon = () => { // helper function when game is won
@@ -60,6 +58,11 @@ function App() {
 
   const youLost = () => { // helper function when game is lost
     setResult('You lost bud'); setScore(0);
+  }
+
+  const resetValues = () => { // changes computers choice and clears userChoice 
+    getComputerChoice()
+    setChoice('')
   }
 
   return (
@@ -73,10 +76,10 @@ function App() {
         <button id='paper' onClick={() => setChoice('paper')}>Paper</button>
         <button id='scissors' onClick={() => setChoice('scissors')}>Scissors</button>
 
-        {userChoice !== '' && 
-        <button id='playGame' onClick={playGame}>Play Game</button>
+        {userChoice !== '' &&
+          <button id='playGame' onClick={playGame}>Play Game</button>
         }
-        
+
         <button onClick={() => setHighScore(0)}>Clear High Score</button>
 
         {score !== 0 && score >= highScore && result !== 'This game was a tie' && // conditionally rendering a message in html tag only on a win
